@@ -29,6 +29,11 @@ if(localStorage.getItem("admin_logged_in") !== "yes"){
 
 <script src="config.js"></script>
 <script src="admin.js"></script>
-
+<script>
+function logoutAdmin(){
+  localStorage.removeItem("admin_logged_in");
+  location.href = "login.html";
+}
+</script>
 </body>
   </html>

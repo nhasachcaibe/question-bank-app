@@ -12,7 +12,7 @@
 
 <div class="card">
   <label>Họ tên học sinh</label><br>
-  <input id="studentName" style="width:100%;padding:10px">
+  <input id="studentName" style="width:100%;padding:10px" placeholder="Ví dụ: Nguyễn Văn A">
 
   <br><br>
 
@@ -22,10 +22,19 @@
   <br><br>
 
   <button class="main-btn" onclick="studentLogin()">Vào làm bài</button>
-  <div id="msg"></div>
+
+  <div id="msg" style="margin-top:12px"></div>
 </div>
 
 <script>
+// Nếu điện thoại đã lưu thông tin học sinh thì vào thẳng trang chủ
+if(
+  localStorage.getItem("student_name") &&
+  localStorage.getItem("student_class")
+){
+  location.href = "index.html";
+}
+
 function studentLogin(){
   const name = document.getElementById("studentName").value.trim();
   const cls = document.getElementById("studentClass").value.trim();
@@ -38,6 +47,7 @@ function studentLogin(){
 
   localStorage.setItem("student_name", name);
   localStorage.setItem("student_class", cls);
+
   location.href = "index.html";
 }
 </script>

@@ -1,3 +1,9 @@
+const studentName = localStorage.getItem("student_name");
+const studentClass = localStorage.getItem("student_class");
+
+if(!studentName || !studentClass){
+  location.href = "student-login.html";
+}
 const params = new URLSearchParams(location.search);
 const passageId = params.get("id");
 

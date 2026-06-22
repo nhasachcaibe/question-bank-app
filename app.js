@@ -3,7 +3,7 @@ async function loadPassages() {
 
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/passages?select=*`,
+      `${SUPABASE_URL}/rest/v1/passages?select=*&order=created_at.desc`,
       {
         headers: {
           apikey: SUPABASE_ANON_KEY,
@@ -25,13 +25,14 @@ async function loadPassages() {
       return;
     }
 
-  app.innerHTML = data.map(item => `
-  <div class="card"
-       style="cursor:pointer"
-       onclick="location.href='quiz.html?id=${item.id}'">
-        <h3>${item.title || "(Không tiêu đề)"}</h3>
-        <div>Môn: ${item.subject || ""}</div>
-        <div>Lớp: ${item.grade || ""}</div>
+    app.innerHTML = data.map(item => `
+      <div class="card"
+           style="cursor:pointer"
+           onclick="location.href='quiz.html?id=${item.id}'">
+        <h2>${item.title || "(Không tiêu đề)"}</h2>
+        <div><b>Môn:</b> ${item.subject || ""}</div>
+        <div><b>Lớp:</b> ${item.grade || ""}</div>
+        <p style="color:#64748b">Bấm để làm bài</p>
       </div>
     `).join("");
 

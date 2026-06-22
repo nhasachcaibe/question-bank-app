@@ -26,4 +26,9 @@
 <script src="admin.js"></script>
 
 </body>
+  <script>
+if(localStorage.getItem("admin_logged_in") !== "yes"){
+  location.href = "login.html";
+}
+</script>
 </html>

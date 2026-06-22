@@ -114,3 +114,41 @@ h2{
     padding:13px;
   }
 }
+
+.result-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
+}
+
+.result-table th,
+.result-table td{
+  border:1px solid #e5e7eb;
+  padding:8px;
+  text-align:left;
+}
+
+.result-table th{
+  background:#eff6ff;
+  color:#1e40af;
+}
+
+.result-table tr:nth-child(even){
+  background:#f8fafc;
+}
+
+.small-btn{
+  padding:6px 10px;
+  border:none;
+  border-radius:6px;
+  background:#2563eb;
+  color:white;
+  cursor:pointer;
+}
+
+select,
+input{
+  border:1px solid #cbd5e1;
+  border-radius:6px;
+  padding:8px;
+}

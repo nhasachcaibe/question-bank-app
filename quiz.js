@@ -72,3 +72,31 @@ html += `
 }
 
 loadQuiz();
+
+function submitQuiz(){
+
+  let correct = 0;
+
+  allQuestions.forEach((q,i)=>{
+
+    const selected =
+      document.querySelector(
+        `input[name="q${i}"]:checked`
+      );
+
+    if(
+      selected &&
+      selected.value === q.correct
+    ){
+      correct++;
+    }
+  });
+
+  document.getElementById("scoreBox").innerHTML =
+    `
+    <div class="card">
+      <h2>Kết quả</h2>
+      <p>Đúng ${correct}/${allQuestions.length} câu</p>
+    </div>
+    `;
+}

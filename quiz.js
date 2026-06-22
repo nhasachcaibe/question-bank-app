@@ -58,11 +58,15 @@ async function loadQuiz() {
     `;
   });
 
-  html += `
-    <button onclick="alert('Bước tiếp theo sẽ chấm điểm')">
-      Nộp bài
-    </button>
-  `;
+  window.allQuestions = questions;
+
+html += `
+  <button onclick="submitQuiz()">
+    Nộp bài
+  </button>
+
+  <div id="scoreBox"></div>
+`;
 
   quiz.innerHTML = html;
 }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chi tiết bài làm</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>
+if(localStorage.getItem("admin_logged_in") !== "yes"){
+  location.href = "login.html";
+}
+</script>
+
+<h1>Chi tiết bài làm</h1>
+
+<div class="card">
+  <button class="main-btn secondary-btn" onclick="location.href='results.html'">
+    Quay lại kết quả
+  </button>
+  <button class="main-btn secondary-btn" onclick="location.href='admin.html'">
+    Quay lại Admin
+  </button>
+</div>
+
+<div id="detail"></div>
+
+<script src="config.js"></script>
+<script src="result-detail.js"></script>
+
+</body>
+</html>

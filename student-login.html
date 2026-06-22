@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Đăng nhập học sinh</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Đăng nhập học sinh</h1>
+
+<div class="card">
+  <label>Họ tên học sinh</label><br>
+  <input id="studentName" style="width:100%;padding:10px">
+
+  <br><br>
+
+  <label>Lớp</label><br>
+  <input id="studentClass" style="width:100%;padding:10px" placeholder="Ví dụ: 9A1">
+
+  <br><br>
+
+  <button class="main-btn" onclick="studentLogin()">Vào làm bài</button>
+  <div id="msg"></div>
+</div>
+
+<script>
+function studentLogin(){
+  const name = document.getElementById("studentName").value.trim();
+  const cls = document.getElementById("studentClass").value.trim();
+
+  if(!name || !cls){
+    document.getElementById("msg").innerHTML =
+      "<p style='color:red'>Vui lòng nhập họ tên và lớp.</p>";
+    return;
+  }
+
+  localStorage.setItem("student_name", name);
+  localStorage.setItem("student_class", cls);
+  location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

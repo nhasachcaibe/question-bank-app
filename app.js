@@ -25,8 +25,10 @@ async function loadPassages() {
       return;
     }
 
-    app.innerHTML = data.map(item => `
-      <div class="card">
+  app.innerHTML = data.map(item => `
+  <div class="card"
+       style="cursor:pointer"
+       onclick="location.href='quiz.html?id=${item.id}'">
         <h3>${item.title || "(Không tiêu đề)"}</h3>
         <div>Môn: ${item.subject || ""}</div>
         <div>Lớp: ${item.grade || ""}</div>

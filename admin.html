@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin - Nhập câu hỏi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Admin - Nhập ngân hàng câu hỏi</h1>
+
+<div class="card">
+  <p>Dán JSON do ChatGPT tạo vào ô bên dưới:</p>
+
+  <textarea id="jsonInput" style="width:100%;height:300px"></textarea>
+
+  <br><br>
+
+  <button onclick="saveJson()">Lưu vào Supabase</button>
+
+  <div id="result" style="margin-top:15px"></div>
+</div>
+
+<script src="config.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>

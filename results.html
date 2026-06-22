@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kết quả học sinh</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>
+if(localStorage.getItem("admin_logged_in") !== "yes"){
+  location.href = "login.html";
+}
+</script>
+
+<h1>Kết quả học sinh</h1>
+
+<div class="card">
+  <button class="main-btn secondary-btn" onclick="location.href='admin.html'">
+    Quay lại Admin
+  </button>
+  <button class="main-btn secondary-btn" onclick="logoutAdmin()">
+    Đăng xuất
+  </button>
+</div>
+
+<div class="card">
+  <h2>Bộ lọc</h2>
+
+  <label>Lớp</label>
+  <select id="filterClass" onchange="loadResults()">
+    <option value="">Tất cả lớp</option>
+  </select>
+
+  <br><br>
+
+  <label>Bài làm</label>
+  <select id="filterPassage" onchange="loadResults()">
+    <option value="">Tất cả bài</option>
+  </select>
+
+  <br><br>
+
+  <label>Tìm học sinh</label>
+  <input id="searchName" oninput="loadResults()" placeholder="Nhập tên học sinh..." style="width:100%;padding:10px">
+
+  <br><br>
+
+  <button class="main-btn" onclick="loadResults()">Tải lại</button>
+</div>
+
+<div id="summary"></div>
+<div id="results"></div>
+
+<script src="config.js"></script>
+<script src="results.js"></script>
+
+</body>
+</html>

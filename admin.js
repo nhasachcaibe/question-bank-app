@@ -32,12 +32,17 @@ async function saveJson() {
         "Content-Type": "application/json",
         Prefer: "return=representation"
       },
-      body: JSON.stringify({
-        title: passage.title || data.title || "Không tiêu đề",
-        content: passage.content || "",
-        grade: data.grade || passage.grade || "",
-        subject: data.subject || passage.subject || ""
-      })
+     body: JSON.stringify({
+  title: passage.title || data.title || "Không tiêu đề",
+  content: passage.content || "",
+  grade: data.grade || passage.grade || "",
+  subject: data.subject || passage.subject || "",
+  semester: data.semester || "",
+  topic: data.topic || "",
+  category: data.category || "",
+  is_public: false,
+  status: "draft"
+})
     });
 
     const passageData = await passageRes.json();

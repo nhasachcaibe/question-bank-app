@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sửa bài</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>
+if(localStorage.getItem("admin_logged_in") !== "yes"){
+  location.href = "login.html";
+}
+</script>
+
+<h1>Sửa bài upload</h1>
+
+<div id="editor"></div>
+
+<script src="config.js"></script>
+<script src="lesson-edit.js"></script>
+
+</body>
+</html>

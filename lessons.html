@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quản lý bài upload</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>
+if(localStorage.getItem("admin_logged_in") !== "yes"){
+  location.href = "login.html";
+}
+</script>
+
+<h1>Quản lý bài upload</h1>
+
+<div class="card">
+  <h2>Bộ lọc</h2>
+
+  <label>Lớp</label>
+  <input id="filterGrade" placeholder="Ví dụ: 9" oninput="loadLessons()">
+
+  <br><br>
+
+  <label>Trạng thái</label>
+  <select id="filterStatus" onchange="loadLessons()">
+    <option value="">Tất cả</option>
+    <option value="draft">Chưa public</option>
+    <option value="public">Đã public</option>
+  </select>
+
+  <br><br>
+
+  <label>Danh mục</label>
+  <input id="filterCategory" placeholder="Đọc hiểu, NLXH..." oninput="loadLessons()">
+</div>
+
+<div id="lessons"></div>
+
+<script src="config.js"></script>
+<script src="lessons.js"></script>
+
+</body>
+</html>

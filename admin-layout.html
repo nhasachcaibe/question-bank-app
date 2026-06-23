@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin - Ngân hàng câu hỏi</title>
+<link rel="stylesheet" href="admin-layout.css">
+</head>
+<body>
+
+<script>
+if(localStorage.getItem("admin_logged_in") !== "yes"){
+  location.href = "login.html";
+}
+</script>
+
+<div class="admin-layout">
+
+  <aside class="admin-menu">
+    <h2>Admin</h2>
+
+    <button onclick="openPage('admin.html','Nhập câu hỏi')">Nhập câu hỏi</button>
+    <button onclick="openPage('results.html','Kết quả học sinh')">Kết quả học sinh</button>
+    <button onclick="openPage('result-detail.html','Chi tiết bài làm')">Chi tiết bài làm</button>
+    <button onclick="openPage('index.html','Trang học sinh')">Trang học sinh</button>
+    <button onclick="openPage('student-login.html','Đăng nhập học sinh')">Đăng nhập học sinh</button>
+
+    <button class="logout" onclick="logoutAdmin()">Đăng xuất</button>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <b id="pageTitle">Nhập câu hỏi</b>
+
+      <div>
+        <button onclick="openNewTab()">Mở tab mới</button>
+        <button onclick="reloadFrame()">Tải lại</button>
+      </div>
+    </div>
+
+    <iframe id="adminFrame" src="admin.html"></iframe>
+  </main>
+
+</div>
+
+<script>
+let currentPage = "admin.html";
+
+function openPage(page,title){
+  currentPage = page;
+  document.getElementById("adminFrame").src = page;
+  document.getElementById("pageTitle").innerText = title;
+}
+
+function openNewTab(){
+  window.open(currentPage, "_blank");
+}
+
+function reloadFrame(){
+  document.getElementById("adminFrame").contentWindow.location.reload();
+}
+
+function logoutAdmin(){
+  localStorage.removeItem("admin_logged_in");
+  location.href = "login.html";
+}
+</script>
+
+</body>
+</html>

@@ -6,7 +6,7 @@ function loginAdmin(){
 
   if(pass === ADMIN_PASSWORD){
     localStorage.setItem("admin_logged_in", "yes");
-    location.href = "admin.html";
+    location.href = "admin-layout.html";
   }else{
     document.getElementById("msg").innerHTML =
       "<p style='color:red'>Sai mật khẩu admin.</p>";

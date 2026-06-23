@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Danh mục</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>
+if(localStorage.getItem("admin_logged_in") !== "yes"){
+  location.href = "login.html";
+}
+</script>
+
+<h1>Quản lý danh mục</h1>
+
+<div class="card">
+  <label>Loại danh mục</label>
+  <select id="type">
+    <option value="subject">Môn học</option>
+    <option value="grade">Lớp</option>
+    <option value="semester">Học kỳ</option>
+    <option value="topic">Chủ đề</option>
+    <option value="category">Danh mục bài</option>
+  </select>
+
+  <br><br>
+
+  <label>Tên danh mục</label>
+  <input id="name" placeholder="Ví dụ: Nghị luận xã hội" style="width:100%;padding:10px">
+
+  <br><br>
+
+  <button class="main-btn" onclick="addCategory()">Thêm danh mục</button>
+
+  <div id="msg"></div>
+</div>
+
+<div id="list"></div>
+
+<script src="config.js"></script>
+<script src="categories.js"></script>
+
+</body>
+</html>

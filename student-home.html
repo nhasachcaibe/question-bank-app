@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Học sinh</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Chọn nội dung ôn tập</h1>
+
+<div class="card">
+  <p id="studentInfo"></p>
+
+  <label>Lớp</label>
+  <select id="grade" style="width:100%;padding:10px"></select>
+
+  <br><br>
+
+  <label>Môn học</label>
+  <select id="subject" style="width:100%;padding:10px"></select>
+
+  <br><br>
+
+  <label>Dạng học</label>
+  <select id="mode" style="width:100%;padding:10px">
+    <option value="lessons">Ôn theo bài</option>
+    <option value="exams">Đề kiểm tra</option>
+  </select>
+
+  <br><br>
+
+  <button class="main-btn" onclick="goNext()">Tiếp tục</button>
+  <button class="main-btn secondary-btn" onclick="changeStudent()">Đổi học sinh</button>
+</div>
+
+<script src="config.js"></script>
+<script src="student-home.js"></script>
+
+</body>
+</html>

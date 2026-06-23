@@ -19,16 +19,29 @@ if(localStorage.getItem("admin_logged_in") !== "yes"){
   <aside class="admin-menu">
     <h2>Admin</h2>
 
-    <button onclick="openPage('admin.html','Nhập câu hỏi')">Nhập câu hỏi</button>
-    <button onclick="openPage('results.html','Kết quả học sinh')">Kết quả học sinh</button>
-    <button onclick="openPage('result-detail.html','Chi tiết bài làm')">Chi tiết bài làm</button>
-    <button onclick="openPage('index.html','Trang học sinh')">Trang học sinh</button>
-    <button onclick="openPage('student-login.html','Đăng nhập học sinh')">Đăng nhập học sinh</button>
+    <button onclick="openPage('admin.html','Nhập câu hỏi')">
+      Nhập câu hỏi
+    </button>
 
-    <button class="logout" onclick="logoutAdmin()">Đăng xuất</button>
+    <button onclick="openPage('results.html','Kết quả học sinh')">
+      Kết quả học sinh
+    </button>
+
+    <button onclick="openPage('index.html','Trang học sinh')">
+      Trang học sinh
+    </button>
+
+    <button onclick="openPage('student-login.html','Đăng nhập học sinh')">
+      Đăng nhập học sinh
+    </button>
+
+    <button class="logout" onclick="logoutAdmin()">
+      Đăng xuất
+    </button>
   </aside>
 
   <main class="admin-main">
+
     <div class="admin-topbar">
       <b id="pageTitle">Nhập câu hỏi</b>
 
@@ -38,32 +51,62 @@ if(localStorage.getItem("admin_logged_in") !== "yes"){
       </div>
     </div>
 
-    <iframe id="adminFrame" src="admin.html"></iframe>
+    <iframe id="adminFrame"></iframe>
+
   </main>
 
 </div>
 
 <script>
-let currentPage = "admin.html";
+const pageMap = {
+  "admin.html": "Nhập câu hỏi",
+  "results.html": "Kết quả học sinh",
+  "index.html": "Trang học sinh",
+  "student-login.html": "Đăng nhập học sinh"
+};
 
-function openPage(page,title){
+let currentPage =
+  new URLSearchParams(location.search).get("page") || "admin.html";
+
+function openPage(page, title){
+
   currentPage = page;
+
   document.getElementById("adminFrame").src = page;
-  document.getElementById("pageTitle").innerText = title;
+
+  document.getElementById("pageTitle").innerText =
+    title || pageMap[page] || page;
+
+  history.pushState(
+    {},
+    "",
+    "admin-layout.html?page=" + encodeURIComponent(page)
+  );
 }
 
 function openNewTab(){
-  window.open(currentPage, "_blank");
+  window.open(
+    "admin-layout.html?page=" + encodeURIComponent(currentPage),
+    "_blank"
+  );
 }
 
 function reloadFrame(){
-  document.getElementById("adminFrame").contentWindow.location.reload();
+  const frame = document.getElementById("adminFrame");
+  frame.contentWindow.location.reload();
 }
 
 function logoutAdmin(){
   localStorage.removeItem("admin_logged_in");
   location.href = "login.html";
 }
+
+// Khi mở admin-layout.html?page=...
+// tự động mở đúng trang trong iframe
+openPage(
+  currentPage,
+  pageMap[currentPage]
+);
 </script>
 
 </body>

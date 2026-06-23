@@ -3,7 +3,7 @@ async function loadPassages() {
 
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/passages?select=*&order=created_at.desc`,
+      `${SUPABASE_URL}/rest/v1/passages?is_public=eq.true&select=*&order=created_at.desc`
       {
         headers: {
           apikey: SUPABASE_ANON_KEY,

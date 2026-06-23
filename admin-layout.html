@@ -19,13 +19,31 @@ if(localStorage.getItem("admin_logged_in") !== "yes"){
   <aside class="admin-menu">
     <h2>Admin</h2>
 
-    <button onclick="openPage('admin.html','Nhập câu hỏi')">
-      Nhập câu hỏi
+    <div class="menu-group-title">Quản lý nội dung</div>
+
+    <button onclick="openPage('admin.html','Nhập JSON câu hỏi')">
+      Nhập JSON câu hỏi
     </button>
+
+    <button onclick="openPage('lessons.html','Quản lý bài upload')">
+      Quản lý bài upload
+    </button>
+
+    <button onclick="openPage('categories.html','Danh mục')">
+      Danh mục
+    </button>
+
+    <div class="menu-group-title">Kết quả học sinh</div>
 
     <button onclick="openPage('results.html','Kết quả học sinh')">
       Kết quả học sinh
     </button>
+
+    <button onclick="openPage('students.html','Danh sách học sinh')">
+      Danh sách học sinh
+    </button>
+
+    <div class="menu-group-title">Xem trang</div>
 
     <button onclick="openPage('index.html','Trang học sinh')">
       Trang học sinh
@@ -43,7 +61,7 @@ if(localStorage.getItem("admin_logged_in") !== "yes"){
   <main class="admin-main">
 
     <div class="admin-topbar">
-      <b id="pageTitle">Nhập câu hỏi</b>
+      <b id="pageTitle">Nhập JSON câu hỏi</b>
 
       <div>
         <button onclick="openNewTab()">Mở tab mới</button>
@@ -59,14 +77,28 @@ if(localStorage.getItem("admin_logged_in") !== "yes"){
 
 <script>
 const pageMap = {
-  "admin.html": "Nhập câu hỏi",
+  "admin.html": "Nhập JSON câu hỏi",
+  "lessons.html": "Quản lý bài upload",
+  "lesson-edit.html": "Sửa bài upload",
+  "categories.html": "Danh mục",
   "results.html": "Kết quả học sinh",
+  "result-detail.html": "Chi tiết bài làm",
+  "students.html": "Danh sách học sinh",
   "index.html": "Trang học sinh",
   "student-login.html": "Đăng nhập học sinh"
 };
 
 let currentPage =
   new URLSearchParams(location.search).get("page") || "admin.html";
+
+function getBasePage(page){
+  return String(page || "").split("?")[0];
+}
+
+function getPageTitle(page, title){
+  const basePage = getBasePage(page);
+  return title || pageMap[basePage] || page;
+}
 
 function openPage(page, title){
 
@@ -75,7 +107,7 @@ function openPage(page, title){
   document.getElementById("adminFrame").src = page;
 
   document.getElementById("pageTitle").innerText =
-    title || pageMap[page] || page;
+    getPageTitle(page, title);
 
   history.pushState(
     {},
@@ -101,11 +133,20 @@ function logoutAdmin(){
   location.href = "login.html";
 }
 
+window.addEventListener("popstate", function(){
+  currentPage =
+    new URLSearchParams(location.search).get("page") || "admin.html";
+
+  document.getElementById("adminFrame").src = currentPage;
+  document.getElementById("pageTitle").innerText = getPageTitle(currentPage);
+});
+
 // Khi mở admin-layout.html?page=...
-// tự động mở đúng trang trong iframe
+// tự động mở đúng trang trong iframe, kể cả trang có query như:
+// admin-layout.html?page=result-detail.html%3Fid%3D...
 openPage(
   currentPage,
-  pageMap[currentPage]
+  getPageTitle(currentPage)
 );
 </script>
 
